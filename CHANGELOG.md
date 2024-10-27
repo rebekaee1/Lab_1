@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0] - 2024-10-27
+## [1.0.0] - 2024-10-27
 
 ### Added
 - Basic PostgreSQL database integration
