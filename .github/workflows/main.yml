@@ -1,50 +1,141 @@
-name: CI
+name: CI/CD
 
 on:
-  push:
-    branches: 
-      - '*'
-      - 'release/*'
-  pull_request:
-    branches: 
-      - main
-      - 'release/*'
+ push:
+   branches: 
+     - '*'
+     - 'release/*'
+ pull_request:
+   branches: 
+     - main
+     - 'release/*'
+ tags:
+   - 'v*'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+ test:
+   runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: testdb
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+   services:
+     postgres:
+       image: postgres:latest
+       env:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: password
+         POSTGRES_DB: testdb
+       ports:
+         - 5432:5432
+       options: >-
+         --health-cmd pg_isready
+         --health-interval 10s
+         --health-timeout 5s
+         --health-retries 5
 
-    steps:
-    - uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        
-    - name: Install dependencies
-      run: npm install
-        
-    - name: Run tests
-      run: npm test
-      env:
-        POSTGRES_HOST: localhost
-        POSTGRES_PORT: 5432
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: password
-        POSTGRES_DB: testdb
+   steps:
+   - uses: actions/checkout@v4
+     
+   - name: Setup Node.js
+     uses: actions/setup-node@v4
+     with:
+       node-version: '20'
+       
+   - name: Install dependencies
+     run: npm install
+       
+   - name: Run tests
+     run: npm test
+     env:
+       POSTGRES_HOST: localhost
+       POSTGRES_PORT: 5432
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: password
+       POSTGRES_DB: testdb
+
+ docs:
+   needs: test
+   runs-on: ubuntu-latest
+   if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')
+   
+   steps:
+   - uses: actions/checkout@v4
+   
+   - name: Setup Node.js
+     uses: actions/setup-node@v4
+     with:
+       node-version: '20'
+   
+   - name: Generate documentation
+     run: |
+       echo "# API Documentation" > docs/api.md
+       echo "Generated on: $(date)" >> docs/api.md
+       echo "Version: $(node -p "require('./package.json').version")" >> docs/api.md
+       
+       # Генерация технической документации
+       echo "# Technical Documentation" > docs/technical.md
+       echo "## Database Configuration" >> docs/technical.md
+       echo "Database configuration and connection details." >> docs/technical.md
+       
+       # Обновление README
+       echo "# Project Documentation" > docs/README.md
+       echo "## Overview" >> docs/README.md
+       echo "This documentation is automatically generated." >> docs/README.md
+   
+   - name: Commit documentation
+     run: |
+       git config --local user.email "action@github.com"
+       git config --local user.name "GitHub Action"
+       git add docs/
+       git commit -m "Update documentation [skip ci]" || echo "No changes to commit"
+       git push || echo "No changes to push"
+
+ release:
+   needs: [test, docs]
+   runs-on: ubuntu-latest
+   if: startsWith(github.ref, 'refs/tags/v')
+   
+   steps:
+   - uses: actions/checkout@v4
+   
+   - name: Create Release
+     uses: actions/create-release@v1
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     with:
+       tag_name: ${{ github.ref }}
+       release_name: Release ${{ github.ref }}
+       draft: false
+       prerelease: false
+       body: |
+         Changes in this Release:
+         - Added new features
+         - Fixed bugs
+         - Updated documentation
+   
+   - name: Setup Node.js
+     uses: actions/setup-node@v4
+     with:
+       node-version: '20'
+       registry-url: 'https://registry.npmjs.org'
+   
+   - name: Install dependencies
+     run: npm install
+   
+   - name: Build project
+     run: npm run build --if-present
+   
+   - name: Generate release artifacts
+     run: |
+       zip -r release.zip . \
+         -x "node_modules/*" \
+         -x ".git/*" \
+         -x ".github/*"
+   
+   - name: Upload Release Asset
+     uses: actions/upload-release-asset@v1
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     with:
+       upload_url: ${{ steps.create_release.outputs.upload_url }}
+       asset_path: ./release.zip
+       asset_name: release.zip
+       asset_content_type: application/zip
