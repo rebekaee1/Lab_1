@@ -1,8 +1,8 @@
-name: PostgreSQL CI
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ '*' ]
   pull_request:
     branches: [ main ]
 
@@ -15,7 +15,7 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: testdb
         ports:
           - 5432:5432
@@ -36,15 +36,13 @@ jobs:
         node-version: '14'
         
     - name: Install dependencies
-      run: |
-        npm install pg
+      run: npm install
         
-    - name: Run database tests
-      run: |
-        node simple_db.js
+    - name: Run tests
+      run: npm test
       env:
         POSTGRES_HOST: localhost
         POSTGRES_PORT: 5432
         POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
+        POSTGRES_PASSWORD: password
         POSTGRES_DB: testdb
