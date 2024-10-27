@@ -1,0 +1,238 @@
+[33mcommit 2c30f094e3d4d870dc828b5c1aef42ef2943a02c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: ecd18f8 99698ee
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:32:19 2024 +0000
+
+    Resolved merge conflict in file1.txt
+
+[33mcommit ecd18f8cc7d627e4a2a411603555caf272cf6106[m
+Merge: b5f1c9e ef894d4
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:27:22 2024 +0000
+
+    Merge remote-tracking branch 'origin/dev3'
+    Merge branch 'dev3
+
+[33mcommit 99698ee27f3d0ab91c5318ac9724b6627307df07[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:20:40 2024 +0000
+
+    Changes from person1 in file1.txt
+
+[1mdiff --git a/file1.txt b/file1.txt[m
+[1mindex 20717ec..2693bbf 100644[m
+[1m--- a/file1.txt[m
+[1m+++ b/file1.txt[m
+[36m@@ -1 +1,2 @@[m
+ измененный первый текст[m
+[32m+[m[32mизменения от person1 в конце файла[m
+
+[33mcommit b5f1c9e22938e18a89e62f1008a14c35017d472c[m[33m ([m[1;31morigin/dev2[m[33m)[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:19:59 2024 +0000
+
+    Changes from person2 in file2.txt
+
+[1mdiff --git a/file2.txt b/file2.txt[m
+[1mindex 5c62e7d..68397ba 100644[m
+[1m--- a/file2.txt[m
+[1m+++ b/file2.txt[m
+[36m@@ -1,2 +1,3 @@[m
+ второй текст[m
+ новый текст для второго файла[m
+[32m+[m[32mизменения от person2[m
+
+[33mcommit ef894d4e6a611dea40299920e73090df34a05bf1[m[33m ([m[1;31morigin/dev3[m[33m)[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:19:29 2024 +0000
+
+    Changes from person3 in file1.txt
+
+[1mdiff --git a/file1.txt b/file1.txt[m
+[1mindex 20717ec..92ef4e2 100644[m
+[1m--- a/file1.txt[m
+[1m+++ b/file1.txt[m
+[36m@@ -1 +1 @@[m
+[31m-измененный первый текст[m
+[32m+[m[32mизменения от person3 в начале файла[m
+
+[33mcommit c9e43121b6b4f6dd67a3d545a1269135d0a187ce[m
+Merge: a502e69 d3162d5
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 13:18:25 2024 +0300
+
+    Merge pull request #2 from rebekaee1/dev2
+    
+    Added file5.txt in dev2 branch
+
+[33mcommit 84e8e6c04558097518ca916a76852ef1431611d6[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:14:37 2024 +0000
+
+    Second commit in dev2
+
+[1mdiff --git a/file5.txt b/file5.txt[m
+[1mindex 2e9fd7f..a305641 100644[m
+[1m--- a/file5.txt[m
+[1m+++ b/file5.txt[m
+[36m@@ -3,3 +3,4 @@[m
+ commit 1[m
+ commit 2[m
+ commit 1[m
+[32m+[m[32mcommit 2[m
+
+[33mcommit 6d4f88c76dafcc6f0d9906b5565dedd14ae8efce[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:14:37 2024 +0000
+
+    First commit in dev2
+
+[1mdiff --git a/file5.txt b/file5.txt[m
+[1mindex 55adfa9..2e9fd7f 100644[m
+[1m--- a/file5.txt[m
+[1m+++ b/file5.txt[m
+[36m@@ -2,3 +2,4 @@[m
+ дополнительный текст[m
+ commit 1[m
+ commit 2[m
+[32m+[m[32mcommit 1[m
+
+[33mcommit c74e3d549933c4b0432d3373352de507bd32818b[m
+Merge: e1eefae cae731d
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:14:22 2024 +0000
+
+    Merge branch 'dev2'
+
+[33mcommit e1eefae0ce9b8c13c7f26f669a9028437335e870[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:12:38 2024 +0000
+
+    Squashed dev2 branch into main
+
+[1mdiff --git a/file5.txt b/file5.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..55adfa9[m
+[1m--- /dev/null[m
+[1m+++ b/file5.txt[m
+[36m@@ -0,0 +1,4 @@[m
+[32m+[m[32mновый файл в ветке dev2[m
+[32m+[m[32mдополнительный текст[m
+[32m+[m[32mcommit 1[m
+[32m+[m[32mcommit 2[m
+
+[33mcommit cae731d0c60f167d6050dc90881913242fa0f632[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:12:24 2024 +0000
+
+    Second commit in dev2
+
+[1mdiff --git a/file5.txt b/file5.txt[m
+[1mindex a133e32..55adfa9 100644[m
+[1m--- a/file5.txt[m
+[1m+++ b/file5.txt[m
+[36m@@ -1,3 +1,4 @@[m
+ новый файл в ветке dev2[m
+ дополнительный текст[m
+ commit 1[m
+[32m+[m[32mcommit 2[m
+
+[33mcommit 6d2b13ac6e0726f93cb0a4b4ab1ce4fa03e68fc1[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:12:24 2024 +0000
+
+    First commit in dev2
+
+[1mdiff --git a/file5.txt b/file5.txt[m
+[1mindex 74d3577..a133e32 100644[m
+[1m--- a/file5.txt[m
+[1m+++ b/file5.txt[m
+[36m@@ -1,2 +1,3 @@[m
+ новый файл в ветке dev2[m
+ дополнительный текст[m
+[32m+[m[32mcommit 1[m
+
+[33mcommit d3162d5f7d9cc5c184f031058628cb1bd30aef79[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:09:02 2024 +0000
+
+    Added file5.txt in dev2 branch
+
+[1mdiff --git a/file5.txt b/file5.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..74d3577[m
+[1m--- /dev/null[m
+[1m+++ b/file5.txt[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32mновый файл в ветке dev2[m
+[32m+[m[32mдополнительный текст[m
+
+[33mcommit 39d412d2131ef6d98ac9f51fe570595fb84b4337[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:08:04 2024 +0000
+
+    Added file4.txt in dev branch
+
+[1mdiff --git a/file4.txt b/file4.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..816e7e1[m
+[1m--- /dev/null[m
+[1m+++ b/file4.txt[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mновый файл в ветке dev[m
+
+[33mcommit a502e69847f50b18a9a42abc40b54499292a64f2[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:05:13 2024 +0000
+
+    Updated file2.txt
+
+[1mdiff --git a/file2.txt b/file2.txt[m
+[1mindex 0e6f738..5c62e7d 100644[m
+[1m--- a/file2.txt[m
+[1m+++ b/file2.txt[m
+[36m@@ -1 +1,2 @@[m
+ второй текст[m
+[32m+[m[32mновый текст для второго файла[m
+
+[33mcommit afd9360d24604b88110a09327cda89e86113cbd4[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 10:01:01 2024 +0000
+
+    Updated file1.txt with new information
+
+[1mdiff --git a/file1.txt b/file1.txt[m
+[1mindex 435b800..20717ec 100644[m
+[1m--- a/file1.txt[m
+[1m+++ b/file1.txt[m
+[36m@@ -1 +1 @@[m
+[31m-первый текст[m
+[32m+[m[32mизмененный первый текст[m
+
+[33mcommit a79dfc49f6df19fe152ed9a86136f20380ddef7c[m
+Author: rebekaee1 <floydii1010@gmail.com>
+Date:   Sun Oct 27 09:53:27 2024 +0000
+
+    three files were added
+
+[1mdiff --git a/file1.txt b/file1.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..435b800[m
+[1m--- /dev/null[m
+[1m+++ b/file1.txt[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mпервый текст[m
+[1mdiff --git a/file2.txt b/file2.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0e6f738[m
+[1m--- /dev/null[m
+[1m+++ b/file2.txt[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mвторой текст[m
+[1mdiff --git a/file3.txt b/file3.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c67deb1[m
+[1m--- /dev/null[m
+[1m+++ b/file3.txt[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mтретий текст[m
