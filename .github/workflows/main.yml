@@ -1,16 +1,16 @@
 name: CI/CD
 
 on:
- push:
-   branches: 
-     - '*'
-     - 'release/*'
- pull_request:
-   branches: 
-     - main
-     - 'release/*'
- tags:
-   - 'v*'
+  push:
+    branches:
+    - '*'          # все ветки
+    - 'release/*'  # все релизные ветки
+    tags:
+    - 'v*'         # все теги, начинающиеся с v
+  pull_request:
+    branches:
+    - main
+    - 'release/*'
 
 jobs:
  test:
