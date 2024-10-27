@@ -44,20 +44,3 @@ jobs:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: password
         POSTGRES_DB: testdb
-
-  merge-pr:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
-    steps:
-      - name: Merge PR
-        if: success()
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            await github.rest.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            })
